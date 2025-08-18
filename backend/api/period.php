@@ -1,19 +1,23 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 header("Content-Type: application/json");
-require_once '../database/db_connect.php';
 
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    http_response_code(401);
-    echo json_encode(['error' => 'Unauthorized']);
-    exit;
-}
+// Debugging line - remove after testing
+file_put_contents('debug.log', "Request received: " . date('Y-m-d H:i:s') . "\n", FILE_APPEND);
 
-// Handle period logging
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = json_decode(file_get_contents('php://input'), true);
-    $stmt = $pdo->prepare("INSERT INTO period_entries (user_id, start_date, flow_level) VALUES (?, ?, ?)");
-    $stmt->execute([$_SESSION['user_id'], $data['startDate'], $data['flow']]);
-    echo json_encode(['success' => true]);
+try {
+    $input = json_decode(file_get_contents('php://input'), true);
+    
+    // Simple response for testing
+    echo json_encode([
+        'success' => true,
+        'received_data' => $input,
+        'server_time' => date('Y-m-d H:i:s')
+    ]);
+    
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['error' => $e->getMessage()]);
 }
 ?>
