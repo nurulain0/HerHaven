@@ -1,11 +1,25 @@
-<div class="period-tracker">
-    <h2>Period Log</h2>
-    <div class="flow-selector">
-        <select id="flow-level">
-            <option value="1">Light</option>
-            <option value="2">Medium</option>
-            <option value="3">Heavy</option>
-        </select>
-    </div>
-    <button id="log-period" class="btn-pink">Confirm</button>
+<div class="period-container">
+    <h2>Period Tracker</h2>
+    <form id="period-form">
+        <div class="form-group">
+            <label for="start-date">Start Date</label>
+            <input type="date" id="start-date" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="flow-level">Flow Intensity</label>
+            <select id="flow-level" required>
+                <option value="1">Light</option>
+                <option value="2">Medium</option>
+                <option value="3">Heavy</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="symptoms">Symptoms</label>
+            <textarea id="symptoms" rows="3"></textarea>
+        </div>
+        
+        <button type="submit" class="btn-pink">Log Period</button>
+    </form>
 </div>
