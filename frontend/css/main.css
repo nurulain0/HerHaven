@@ -1,103 +1,17 @@
 :root {
-    /* Color Palette */
     --primary-pink: #FFD6E0;
-    --secondary-pink: #FFB7C5;
     --accent-pink: #FF85A2;
     --light-gray: #F5F5F5;
-    --medium-gray: #E0E0E0;
-    --dark-gray: #333333;
-    --white: #FFFFFF;
-    
-    /* Typography */
-    --font-main: 'Inter', sans-serif;
-    --font-weight-light: 300;
-    --font-weight-regular: 400;
-    --font-weight-bold: 600;
-    
-    /* Spacing */
-    --space-sm: 8px;
-    --space-md: 16px;
-    --space-lg: 24px;
-    --space-xl: 32px;
-    --space-xxl: 48px;
-    
-    /* Border Radius */
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 12px;
-    --radius-xl: 16px;
-    
-    /* Shadows */
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
 }
 
-/* Utility Classes */
-.pink-bg {
-    background-color: var(--primary-pink);
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--light-gray);
 }
 
-.text-pink {
-    color: var(--accent-pink);
-}
-
-.text-bold {
-    font-weight: var(--font-weight-bold);
-}
-
-.text-center {
-    text-align: center;
-}
-
-.flex {
-    display: flex;
-}
-
-.flex-col {
-    flex-direction: column;
-}
-
-.items-center {
-    align-items: center;
-}
-
-.justify-between {
-    justify-content: space-between;
-}
-
-.gap-sm {
-    gap: var(--space-sm);
-}
-
-.gap-md {
-    gap: var(--space-md);
-}
-
-.mb-sm {
-    margin-bottom: var(--space-sm);
-}
-
-.mb-md {
-    margin-bottom: var(--space-md);
-}
-
-.mb-lg {
-    margin-bottom: var(--space-lg);
-}
-
-.p-sm {
-    padding: var(--space-sm);
-}
-
-.p-md {
-    padding: var(--space-md);
-}
-
-.rounded-md {
-    border-radius: var(--radius-md);
-}
-
-.rounded-lg {
-    border-radius: var(--radius-lg);
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
