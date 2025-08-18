@@ -76,3 +76,5 @@ CREATE INDEX idx_cycle_data_user ON cycle_data(user_id);
 CREATE INDEX idx_cycle_data_dates ON cycle_data(start_date, end_date);
 CREATE INDEX idx_symptoms_user_date ON symptoms(user_id, date);
 CREATE INDEX idx_mood_entries_user_date ON mood_entries(user_id, date);
+ALTER TABLE period_entries 
+MODIFY COLUMN symptoms TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
