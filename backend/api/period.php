@@ -1,18 +1,19 @@
 <?php
-// Database configuration
-define('DB_HOST', 'localhost');
-define('DB_USER', 'herhaven_user');
-define('DB_PASSWORD', 'secure_password_123');
-define('DB_NAME', 'herhaven_db');
+header("Content-Type: application/json");
+require_once '../database/db_connect.php';
 
-// Application settings
-define('APP_NAME', 'Her Haven');
-define('APP_VERSION', '1.0.0');
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    http_response_code(401);
+    echo json_encode(['error' => 'Unauthorized']);
+    exit;
+}
 
-// Security settings
-define('PASSWORD_HASH_COST', 12);
-
-// Error reporting
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// Handle period logging
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $data = json_decode(file_get_contents('php://input'), true);
+    $stmt = $pdo->prepare("INSERT INTO period_entries (user_id, start_date, flow_level) VALUES (?, ?, ?)");
+    $stmt->execute([$_SESSION['user_id'], $data['startDate'], $data['flow']]);
+    echo json_encode(['success' => true]);
+}
 ?>
