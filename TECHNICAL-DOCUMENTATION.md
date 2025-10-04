@@ -40,7 +40,7 @@ HerHaven follows a modern three-tier architecture pattern, separating concerns a
 
 ### System Architecture Diagram
 
-![HerHaven Architecture](./frontend/assets/architecture-diagram.svg)
+![HerHaven Architecture](./frontend/assets/architecture-diagram.png)
 
 *Figure 1: HerHaven System Architecture - Shows the interaction between Frontend, Backend, C++ Modules, and Database layers*
 
