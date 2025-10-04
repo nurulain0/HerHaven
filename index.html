@@ -1,16 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Her Haven - Feminine Health Tracker</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HerHaven - Feminine Health Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+    body {background:#fffafc;color:#333;scroll-behavior:smooth;}
+
+    /* Hero */
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+    }
+    .overlay {
+      position:absolute; top:0; left:0; width:100%; height:100%;
+      background: rgba(255,182,193,0.4); backdrop-filter: blur(2px);
+    }
+    .hero-content {position:relative; z-index:2; color:#fff; max-width:600px; padding:1rem;}
+    .hero h1 {font-size:3rem; font-weight:600; margin-bottom:1rem;}
+    .hero p {font-size:1.2rem; margin-bottom:2rem;}
+    .hero button {background:#e75480; color:#fff; border:none; border-radius:8px; padding:0.8rem 1.6rem; font-size:1rem; cursor:pointer; transition:0.3s;}
+    .hero button:hover {background:#d14470; transform:scale(1.05);}
+
+    section h2 {text-align:center; color:#e75480; font-size:2rem; margin:3rem 0 2rem;}
+
+    /* Features */
+    .features {padding:0 2rem;}
+    .cards {display:flex; flex-wrap:wrap; justify-content:center; gap:2rem;}
+    .card {background:#fff; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.1); width:280px; padding:2rem 1.5rem; text-align:center; transition:transform 0.3s;}
+    .card:hover {transform:translateY(-5px);}
+    .card img {width:70px; margin-bottom:1rem;}
+    .card h3 {margin-bottom:0.5rem;}
+    .card p {font-size:0.95rem; color:#555;}
+
+    /* Cycle Tracker */
+    .tracker {padding:2rem; max-width:900px; margin:0 auto; text-align:center;}
+    .tracker p {margin-bottom:1rem; color:#555;}
+    .tracker .day {
+      display:inline-block;
+      width:36px; height:36px; line-height:36px; margin:4px;
+      border-radius:50%; background:#f4f4f4; color:#333; font-weight:500;
+      cursor:pointer; transition:0.3s;
+    }
+    .tracker .day.period {background:#e75480; color:#fff;}
+    .tracker .day.fertile {background:#ffb6c1; color:#fff;}
+    .tracker .day.ovulation {background:#ff85a2; color:#fff;}
+    .tracker .day:hover {transform:scale(1.1);}
+
+    /* Call to action */
+    .cta {background:#ffe6eb; padding:3rem 1rem; text-align:center;}
+    .cta button {margin-top:1rem; background:#e75480; color:#fff; border:none; padding:1rem 2rem; border-radius:8px; font-size:1rem; cursor:pointer; transition:0.3s;}
+    .cta button:hover {background:#d14470; transform:scale(1.05);}
+
+    /* Footer */
+    footer {text-align:center; padding:1.5rem; background:#f9f9f9; color:#777; font-size:0.9rem;}
+  </style>
 </head>
 <body>
-    <div id="app">
-        <!-- Content loaded dynamically -->
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>HerHaven</h1>
+      <p>Track, understand, and embrace your cycle with confidence and care.</p>
+      <button onclick="scrollToSection('features')">Get Started</button>
     </div>
-    <script src="js/main.js" type="module"></script>
+  </header>
+
+  <!-- Features -->
+  <section id="features" class="features">
+    <h2>Why Choose HerHaven?</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/942/942751.png" alt="Cycle Tracking">
+        <h3>Comprehensive Tracking</h3>
+        <p>Monitor your period, ovulation, and fertile window easily with visual calendars.</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/2659/2659980.png" alt="Mood Tracker">
+        <h3>Mood & Symptoms</h3>
+        <p>Keep track of moods, energy levels, and physical symptoms to spot patterns.</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/4144/4144552.png" alt="Wellness Tips">
+        <h3>Insights & Wellness</h3>
+        <p>Receive personalized health tips based on your cycle and lifestyle data.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cycle Tracker -->
+  <section class="tracker">
+    <h2>Cycle Calendar</h2>
+    <p>Click days to see your cycle phases:</p>
+    <div id="cycle-days"></div>
+  </section>
+
+  <!-- Call to action -->
+  <section class="cta">
+    <h2>Take control of your health journey 💗</h2>
+    <button onclick="alert('Welcome to HerHaven! 🌸 Your wellness journey begins now.')">Join HerHaven</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 HerHaven. Crafted with care for women everywhere.</p>
+  </footer>
+
+  <script>
+    function scrollToSection(id){
+      document.getElementById(id).scrollIntoView({behavior:'smooth'});
+    }
+
+    // Generate a 28-day cycle calendar
+    const cycleContainer = document.getElementById('cycle-days');
+    const periodDays = [1,2,3,4,5]; // Period
+    const fertileDays = [12,13,14,15,16]; // Fertile
+    const ovulationDay = 14;
+
+    for(let i=1;i<=28;i++){
+      const day = document.createElement('span');
+      day.className = 'day';
+      day.textContent = i;
+      if(periodDays.includes(i)) day.classList.add('period');
+      else if(fertileDays.includes(i)) day.classList.add('fertile');
+      if(i===ovulationDay) day.classList.add('ovulation');
+
+      cycleContainer.appendChild(day);
+    }
+  </script>
 </body>
 </html>
