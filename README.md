@@ -1,7 +1,7 @@
 # HerHaven 
 
-Welcome to **HerHaven** — a women-led tech community project!  
-We’re participating in **Hacktoberfest 2025** 
+HerHaven is a women-led open-source web app designed to track menstrual cycles, pregnancy progress, and hormonal health — all in one safe, educative, and empowering digital space. Built with a responsive interface, it aims to promote awareness, inclusivity, and wellness through technology.
+WE'RE PARTICIPATING IN **HACKTOBERFEST 2025**
 
 ## 💡 How to Contribute
 1. Fork this repo.
