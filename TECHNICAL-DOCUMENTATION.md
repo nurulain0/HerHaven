@@ -40,9 +40,55 @@ HerHaven follows a modern three-tier architecture pattern, separating concerns a
 
 ### System Architecture Diagram
 
-![HerHaven Architecture](./frontend/assets/architecture-diagram.png)
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                              HerHaven System Architecture                      │
+└─────────────────────────────────────────────────────────────────────────────────┘
 
-*Figure 1: HerHaven System Architecture - Shows the interaction between Frontend, Backend, C++ Modules, and Database layers*
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   FRONTEND      │    │    BACKEND      │    │   C++ MODULES   │
+│   (Client)      │    │   (PHP APIs)    │    │  (Analytics)    │
+├─────────────────┤    ├─────────────────┤    ├─────────────────┤
+│ • HTML Pages    │    │ • Auth API      │    │ • Cycle         │
+│ • CSS Styling   │◄──►│ • Mood API      │◄──►│   Prediction    │
+│ • JavaScript    │    │ • Period API    │    │ • Health        │
+│ • Router        │    │ • Pregnancy API │    │   Metrics       │
+│ • Auth Module   │    │ • Journal API   │    │ • Statistical   │
+│ • Dashboard     │    │ • Validation    │    │   Analysis      │
+│ • Mood Tracker  │    │ • Session Mgmt  │    │ • Anomaly       │
+│ • Period Tracker│    │ • Security      │    │   Detection     │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+         │                       │                       │
+         │                       │                       │
+         │              ┌─────────────────┐              │
+         └──────────────►│    DATABASE     │◄─────────────┘
+                        │   (MySQL)       │
+                        ├─────────────────┤
+                        │ • Users         │
+                        │ • Cycle Data    │
+                        │ • Symptoms      │
+                        │ • Health Data   │
+                        │ • Analytics     │
+                        └─────────────────┘
+
+Data Flow:
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   User      │───►│  Frontend   │───►│   Backend   │───►│  Database   │
+│ Interaction │    │ Validation  │    │ Processing  │    │  Storage    │
+└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+                           │                   │
+                           │                   ▼
+                           │            ┌─────────────┐
+                           │            │ C++ Modules │
+                           │            │ Analytics   │
+                           │            └─────────────┘
+                           │                   │
+                           │                   │
+                           └───────────────────┘
+                                 Results
+```
+
+*Figure 1: HerHaven System Architecture - Text-based diagram showing the interaction between Frontend, Backend, C++ Modules, and Database layers*
 
 ---
 
