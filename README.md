@@ -10,8 +10,13 @@ HerHaven is a women-led open-source web app designed to track menstrual cycles, 
 > - Setting up the core React structure 🧩  
 > - Designing UI/UX layouts 🎨  
 > - Writing content for awareness and education 🩷  
-> 
-> Feel free to explore the repo, check open issues, and submit your ideas — every small contribution helps us grow together 🌱  
+
+## 🌼 Project Preview  
+Here’s a quick visual preview of what I want to build with HerHaven:  
+👉 [View Prototype](https://preview--herhaven-womenapp.lovable.app/)  
+
+> This is just a concept preview — the project is still in progress!  
+> I’d love your ideas and contributions to bring this to life 💻💫
 
 ## 💡 How to Contribute
 1. Fork this repo.
@@ -26,3 +31,5 @@ HerHaven is a women-led open-source web app designed to track menstrual cycles, 
 - Improve the README or documentation.
 - Add creative design concepts or social media ideas.
 - Fix typos or improve instructions.
+
+
