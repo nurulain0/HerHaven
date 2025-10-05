@@ -1,152 +1,129 @@
-# HerHaven
+HerHaven is a women-led open-source web app designed to track menstrual cycles, pregnancy progress, and hormonal health — all in one safe, educative, and empowering digital space.
+Built with a responsive, inclusive design, HerHaven aims to promote wellness and awareness through technology.
 
-HerHaven is a women-led open-source web app designed to track menstrual cycles, pregnancy progress, and hormonal health — all in one safe, educative, and empowering digital space. Built with a responsive interface, it aims to promote awareness, inclusivity, and wellness through technology.
+⚠️ Project Status: In Progress
+HerHaven is actively being rebuilt with a modern React frontend and Node.js backend.
+We’re participating in Hacktoberfest 2025 🌸 and open to contributions from developers, designers, and writers who want to help shape this women-led wellness platform!
 
-> ⚠️ **Project Status: In Progress**
-> HerHaven is currently under active development and not yet deployed.
-> We’re participating in **Hacktoberfest 2025**, and open to contributions from developers, designers, and writers who want to help shape this women-led wellness platform! 💜
->
-> The current phase focuses on:
->
-> - Setting up the core React structure 🧩
-> - Designing UI/UX layouts 🎨
-> - Writing content for awareness and education 🩷
+🌼 Project Preview
 
-## 🌼 Project Preview
+Here’s a glimpse of the design vision for HerHaven:
+👉 View Prototype
 
-Here’s a quick visual preview of what I want to build with HerHaven:👉 [View Prototype](https://preview--herhaven-womenapp.lovable.app/)
+This is just a concept preview created on Lovable — the code is being restructured and modernized from scratch.
 
-> This is just a concept preview — the project is still in progress!
-> I’d love your ideas and contributions to bring this to life 💻💫
+🚧 Current Status
 
-## Setup and Installation
+✅ Static frontend concepts exist (HTML/CSS version)
+🛠️ React setup and routing under development
+🧠 Backend APIs planned with Node.js & MySQL
+🔐 Authentication & database structure in design phase
+📦 Old PHP files archived in /legacy_php
 
-Follow these steps to get HerHaven running on your local machine.
+⚙️ Setup and Installation
 
-The project is built with a  **PHP backend** , a  **MySQL database** , and a  **static HTML/CSS/JavaScript frontend** .
+Follow these steps to run HerHaven on your local machine.
 
-##### 1. Prerequisites
+🧩 1. Prerequisites
 
-Before you begin, ensure you have the following installed on your system:
+Make sure you have these installed:
 
-* **PHP** (Version 8.0 or newer is recommended)
-* **MySQL** or **MariaDB** (A database server)
-* **Git** (For cloning the repository)
-* **Composer** (Optional, for managing PHP dependencies)
+Node.js (v18 or newer)
 
-##### 2. Installation Steps
+npm or yarn
 
-**Step 1: Clone the Repository**
+MySQL (or MariaDB)
 
-First, clone the HerHaven repository to your local machine using Git.
+Git
 
-```
-git clone https://github.com/your-username/HerHaven.git
+🚀 2. Installation Steps
+Step 1: Clone the Repository
+git clone https://github.com/<your-username>/HerHaven.git
 cd HerHaven
-```
 
-**Step 2: Set Up the Database**
+Step 2: Backend Setup (Node.js)
+cd backend
+npm install
 
-The backend requires a MySQL database named `herhaven`.
 
-1. **Create the Database:** Run the following command in your terminal. You may be prompted for your MySQL root password.
-   **SQL**
+Create a .env file inside the backend directory:
 
-   ```
-   mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS herhaven;"
-   ```
-2. **Import the Database Schema:** This will create all the necessary tables.
-   **SQL**
+PORT=5000
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=
+DB_NAME=herhaven
 
-   ```
-   mysql -u root -p herhaven < backend/database/queries.sql
-   ```
-3. **Configure Database Connection:** Open the `backend/database/database connect.php` file. The default credentials are for a user named `root` with an empty password. If your local MySQL setup is different, update the `$username` and `$password` variables accordingly.
-   **PHP**
 
-   ```
-   // backend/database/database connect.php
-   $host = 'localhost';
-   $dbname = 'herhaven';
-   $username = 'root'; // <-- Change if needed
-   $password = '';     // <-- Change if needed
-   ```
+Then start the backend server:
 
-**Step 3: Address Backend Fixes**
+npm run server
 
-There are a couple of known issues in the current codebase. Here’s how to fix them for local development.
+Step 3: Frontend Setup (React)
 
-1. **Create the `queries.php` File:** Several API files require a file that is currently missing. Create a new file named `queries.php` inside the `backend/database/` directory.
-   **File:** `backend/database/queries.php`
-   **PHP**
+In a new terminal:
 
-   ```
-   <?php
-   // This file is required by multiple API endpoints.
-   // It includes the main database connection to make the $pdo variable available.
-   require_once 'database connect.php';
+cd frontend
+npm install
+npm run dev
 
-   // You can add helper functions here as the project grows.
-   // For example:
-   /*
-   function get_user_by_email($pdo, $email) {
-       $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-       $stmt->execute([$email]);
-       return $stmt->fetch(PDO::FETCH_ASSOC);
-   }
-   */
-   ?>
-   ```
 
-   This will prevent "file not found" errors when you run the backend.
-2. **Fix Session Cookie for Local Development:** For login sessions to work on `http://localhost`, you need to make a small change.
+Visit the app at:
+👉 http://localhost:5173
 
-   * Open `backend/api/mood.php`.
-   * Find the line that starts with `session_set_cookie_params`.
-   * Change `'secure' => true,` to `'secure' => false,`.
+🧱 Folder Structure
+HerHaven/
+├── frontend/           # React frontend (new)
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+├── backend/            # Node.js + MySQL backend
+│   ├── api/
+│   ├── database/
+│   └── server.js
+│
+├── legacy_php/         # Old PHP version (archived)
+├── README.md
+└── .env (local)
 
-   **PHP**
+💡 How to Contribute
 
-   ```
-   // In backend/api/mood.php
-   session_set_cookie_params([
-       'lifetime' => 86400,
-       'path' => '/',
-       'domain' => '',
-       'secure' => false, // Changed for local development
-       'httponly' => true,
-       'samesite' => 'Lax'
-   ]);
-   ```
+We’d love your help in shaping HerHaven 💜
+Follow these steps:
 
-**Step 4: Run the Application**
+Fork this repo
 
-We will use PHP's built-in web server to run both the frontend and backend from the same origin.
+Create a branch:
 
-1. **Start the Server:** From the **root directory** of the `HerHaven` project, run:
-   **Bash**
+git checkout -b yourname-feature
 
-   ```
-   php -S localhost:8000
-   ```
-2. **Access the App:** Open your web browser and navigate to:
 
-   * **Frontend:** `http://localhost:8000/frontend/`
+Make your changes (React UI, backend routes, docs, etc.)
 
-You should now see the HerHaven website running locally! The backend APIs are accessible at `http://localhost:8000/backend/api/`.
+Commit:
 
-## 💡 How to Contribute
+git commit -m "Added <feature> by <yourname>"
 
-1. Fork this repo.
-2. Create a new branch: `git checkout -b yourname-feature`.
-3. Make your changes (documentation, design ideas, feature proposals, etc.).
-4. Commit your work: `git commit -m "Added contribution by <your name>"`.
-5. Push the branch: `git push origin yourname-feature`.
-6. Open a Pull Request 🚀
 
-## 🎯 Contribution Ideas
+Push:
 
-- Add ideas or features to improve HerHaven’s website.
-- Improve the README or documentation.
-- Add creative design concepts or social media ideas.
-- Fix typos or improve instructions.
+git push origin yourname-feature
+
+
+Open a Pull Request 🚀
+
+🎯 Contribution Ideas
+
+💻 Build React components (Home, Dashboard, or Auth pages)
+🎨 Improve UI/UX or design layouts
+🧠 Write content for awareness sections
+⚙️ Create Node.js routes or APIs
+🪄 Organize or modernize the project structure
+📝 Improve documentation and developer setup guides
+
+💬 Join the Journey
+
+This project is all about collaboration, community, and creativity.
+Every contribution — big or small — helps us make HerHaven a better, safer digital space for women everywhere
+ 
