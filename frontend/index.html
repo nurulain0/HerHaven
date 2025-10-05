@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HerHaven - Feminine Health Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-pink: #FFD6E0;
+      --secondary-pink: #FFB7C5;
+      --accent-pink: #FF85A2;
+      --light-gray: #F5F5F5;
+      --medium-gray: #E0E0E0;
+      --dark-gray: #333333;
+      --white: #FFFFFF;
+      --sidebar-width: 260px;
+      --sidebar-collapsed: 70px;
+    }
+
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+    body {background:#fffafc;color:#333;scroll-behavior:smooth;}
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: var(--sidebar-width);
+      height: 100vh;
+      background: var(--white);
+      box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+      padding: 2rem 0;
+      z-index: 1000;
+      overflow-y: auto;
+      overflow-x: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar.collapsed {
+      width: 0;
+      padding: 0;
+      box-shadow: none;
+    }
+
+    .sidebar-header {
+      padding: 0 1.5rem 2rem;
+      border-bottom: 2px solid var(--primary-pink);
+      margin-bottom: 1.5rem;
+      white-space: nowrap;
+    }
+
+    .sidebar-header-content {
+      overflow: hidden;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar.collapsed .sidebar-header-content {
+      opacity: 0;
+      width: 0;
+    }
+
+    .sidebar-header h2 {
+      color: var(--accent-pink);
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .sidebar-header p {
+      color: var(--medium-gray);
+      font-size: 0.85rem;
+      margin-top: 0.3rem;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 2rem;
+      left: calc(var(--sidebar-width) - 20px);
+      background: var(--accent-pink);
+      color: var(--white);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      z-index: 1001;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .sidebar.collapsed .toggle-btn {
+      left: 0;
+      border-radius: 0 50% 50% 0;
+    }
+
+    .toggle-btn:hover {
+      background: var(--secondary-pink);
+      transform: scale(1.1);
+    }
+
+    .nav-links {
+      list-style: none;
+      padding: 0 1rem;
+    }
+
+    .nav-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .nav-links a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--dark-gray);
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-weight: 400;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .nav-links a:hover {
+      background: var(--primary-pink);
+      color: var(--accent-pink);
+      transform: translateX(5px);
+    }
+
+    .sidebar.collapsed .nav-links a:hover {
+      transform: translateX(0);
+    }
+
+    .nav-links a.active {
+      background: var(--accent-pink);
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .nav-links a::before {
+      content: '●';
+      margin-right: 0.8rem;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    .nav-text {
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar.collapsed .nav-text {
+      opacity: 0;
+      width: 0;
+    }
+
+    /* Main content with sidebar offset */
+    .main-content {
+      margin-left: var(--sidebar-width);
+      min-height: 100vh;
+      transition: margin-left 0.3s ease;
+    }
+
+    .sidebar.collapsed ~ .main-content {
+      margin-left: 0;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+    }
+    .overlay {
+      position:absolute; top:0; left:0; width:100%; height:100%;
+      background: rgba(255,182,193,0.4); backdrop-filter: blur(2px);
+    }
+    .hero-content {position:relative; z-index:2; color:#fff; max-width:600px; padding:1rem;}
+    .hero h1 {font-size:3rem; font-weight:600; margin-bottom:1rem;}
+    .hero p {font-size:1.2rem; margin-bottom:2rem;}
+    .hero button {background:#e75480; color:#fff; border:none; border-radius:8px; padding:0.8rem 1.6rem; font-size:1rem; cursor:pointer; transition:0.3s;}
+    .hero button:hover {background:#d14470; transform:scale(1.05);}
+
+    section h2 {text-align:center; color:#e75480; font-size:2rem; margin:3rem 0 2rem;}
+
+    /* Features */
+    .features {padding:0 2rem;}
+    .cards {display:flex; flex-wrap:wrap; justify-content:center; gap:2rem;}
+    .card {background:#fff; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.1); width:280px; padding:2rem 1.5rem; text-align:center; transition:transform 0.3s;}
+    .card:hover {transform:translateY(-5px);}
+    .card img {width:70px; margin-bottom:1rem;}
+    .card h3 {margin-bottom:0.5rem;}
+    .card p {font-size:0.95rem; color:#555;}
+
+    /* Cycle Tracker */
+    .tracker {padding:2rem; max-width:900px; margin:0 auto; text-align:center;}
+    .tracker p {margin-bottom:1rem; color:#555;}
+    .tracker .day {
+      display:inline-block;
+      width:36px; height:36px; line-height:36px; margin:4px;
+      border-radius:50%; background:#f4f4f4; color:#333; font-weight:500;
+      cursor:pointer; transition:0.3s;
+    }
+    .tracker .day.period {background:#e75480; color:#fff;}
+    .tracker .day.fertile {background:#ffb6c1; color:#fff;}
+    .tracker .day.ovulation {background:#ff85a2; color:#fff;}
+    .tracker .day:hover {transform:scale(1.1);}
+
+    /* Call to action */
+    .cta {background:#ffe6eb; padding:3rem 1rem; text-align:center;}
+    .cta button {margin-top:1rem; background:#e75480; color:#fff; border:none; padding:1rem 2rem; border-radius:8px; font-size:1rem; cursor:pointer; transition:0.3s;}
+    .cta button:hover {background:#d14470; transform:scale(1.05);}
+
+    /* Footer */
+    footer {text-align:center; padding:1.5rem; background:#f9f9f9; color:#777; font-size:0.9rem;}
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      
+      .main-content {
+        margin-left: 0;
+      }
+      
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .nav-links li {
+        margin: 0.25rem;
+      }
+      
+      .nav-links a {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fixed Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <button class="toggle-btn" id="toggleBtn" aria-label="Toggle sidebar">☰</button>
+    <div class="sidebar-header">
+      <div class="sidebar-header-content">
+        <h2>HerHaven</h2>
+        <p>Your wellness journey</p>
+      </div>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#home" class="active"><span class="nav-text">Home</span></a></li>
+        <li><a href="#features"><span class="nav-text">Resources & Articles</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Hero -->
+    <header id="home" class="hero">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1>HerHaven</h1>
+        <p>Track, understand, and embrace your cycle with confidence and care.</p>
+        <button onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Get Started</button>
+      </div>
+    </header>
+
+    <!-- Features -->
+    <section id="features" class="features">
+      <h2>Why Choose HerHaven?</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="https://cdn-icons-png.flaticon.com/512/942/942751.png" alt="Cycle Tracking">
+          <h3>Comprehensive Tracking</h3>
+          <p>Monitor your period, ovulation, and fertile window easily with visual calendars.</p>
+        </div>
+        <div class="card">
+          <img src="https://cdn-icons-png.flaticon.com/512/2659/2659980.png" alt="Mood Tracker">
+          <h3>Mood & Symptoms</h3>
+          <p>Keep track of moods, energy levels, and physical symptoms to spot patterns.</p>
+        </div>
+        <div class="card">
+          <img src="https://cdn-icons-png.flaticon.com/512/4144/4144552.png" alt="Wellness Tips">
+          <h3>Insights & Wellness</h3>
+          <p>Receive personalized health tips based on your cycle and lifestyle data.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cycle Tracker -->
+    <section id="tracker" class="tracker">
+      <h2>Cycle Calendar</h2>
+      <p>Click days to see your cycle phases:</p>
+      <div id="cycle-days"></div>
+    </section>
+
+    <!-- Call to action -->
+    <section class="cta">
+      <h2>Take control of your health journey 💗</h2>
+      <button onclick="alert('Welcome to HerHaven! 🌸 Your wellness journey begins now.')">Join HerHaven</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 HerHaven. Crafted with care for women everywhere.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Toggle sidebar
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('toggleBtn');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+      toggleBtn.textContent = sidebar.classList.contains('collapsed') ? '☰' : '✕';
+    });
+
+    // Generate a 28-day cycle calendar
+    const cycleContainer = document.getElementById('cycle-days');
+    const periodDays = [1,2,3,4,5];
+    const fertileDays = [12,13,14,15,16];
+    const ovulationDay = 14;
+
+    for(let i=1;i<=28;i++){
+      const day = document.createElement('span');
+      day.className = 'day';
+      day.textContent = i;
+      if(periodDays.includes(i)) day.classList.add('period');
+      else if(fertileDays.includes(i)) day.classList.add('fertile');
+      if(i===ovulationDay) day.classList.add('ovulation');
+      cycleContainer.appendChild(day);
+    }
+
+    // Active link on scroll
+    const sections = document.querySelectorAll('section, header');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if(scrollY >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if(link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
