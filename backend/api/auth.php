@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-require_once '../../database/db_connect.php';
+require_once '../database/database connect.php';
 
 $input = json_decode(file_get_contents('php://input'), true);
 
