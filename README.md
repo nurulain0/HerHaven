@@ -8,7 +8,7 @@ We’re participating in Hacktoberfest 2025 🌸 and open to contributions from 
 🌼 Project Preview
 
 Here’s a glimpse of the design vision for HerHaven:
-👉 View Prototype
+👉 View Prototype https://preview--herhaven-womenapp.lovable.app/
 
 This is just a concept preview created on Lovable — the code is being restructured and modernized from scratch.
 
