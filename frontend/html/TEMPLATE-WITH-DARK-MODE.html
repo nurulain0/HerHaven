@@ -1,0 +1,220 @@
+<!-- 
+    EXAMPLE: How to add dark mode to any HerHaven page
+    Copy this template and customize for your needs
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title - HerHaven</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- ============================================
+         STEP 1: ADD THESE CSS FILES (in order)
+         ============================================ -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/dark-mode.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- Your custom page styles (optional) -->
+    <style>
+        /* Your page-specific styles here */
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- ============================================
+             SIDEBAR NAVIGATION
+             ============================================ -->
+        <nav class="main-nav">
+            
+            <!-- Logo & Title -->
+            <div class="nav-header">
+                <img src="../herheavenLogo.png" alt="HerHaven Logo" class="logo">
+                <h1>HerHaven</h1>
+            </div>
+            
+            <!-- ============================================
+                 STEP 2: ADD DARK MODE TOGGLE BUTTON
+                 ============================================ -->
+            <div class="theme-toggle-container" 
+                 role="button" 
+                 aria-label="Toggle dark mode" 
+                 tabindex="0">
+                <span class="theme-toggle-icon sun">☀️</span>
+                <div class="theme-toggle-switch">
+                    <div class="theme-toggle-slider"></div>
+                </div>
+                <span class="theme-toggle-icon moon">🌙</span>
+            </div>
+            
+            <!-- Navigation Links -->
+            <ul class="nav-links">
+                <li><a href="dashboard.html">📊 Dashboard</a></li>
+                <li><a href="page1.html">📅 Period Tracker</a></li>
+                <li class="active"><a href="page2.html">😊 Mood Tracker</a></li>
+                <li><a href="page3.html">📝 Journal</a></li>
+                <li><a href="page4.html">🤰 Pregnancy</a></li>
+                <li><a href="page5.html">📈 Health Metrics</a></li>
+                <li><a href="page6.html">⚙️ Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- ============================================
+             MAIN CONTENT AREA
+             ============================================ -->
+        <main class="content-area">
+            
+            <!-- Header -->
+            <header class="content-header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button>🔍</button>
+                </div>
+                <div class="user-menu">
+                    <span class="welcome">Welcome, User!</span>
+                    <span class="avatar">👤</span>
+                </div>
+            </header>
+
+            <!-- Your Page Content -->
+            <div class="page-content">
+                
+                <!-- Example: Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Your Card Title</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Your content here will automatically support dark mode!</p>
+                        <p>Just use the CSS variables for colors:</p>
+                        <ul>
+                            <li>var(--bg-card) for backgrounds</li>
+                            <li>var(--text-primary) for text</li>
+                            <li>var(--primary-pink) for accents</li>
+                            <li>var(--border-light) for borders</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Example: Form -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Example Form</h3>
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <label for="example-input">Label</label>
+                            <input 
+                                type="text" 
+                                id="example-input" 
+                                placeholder="Enter something...">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="example-select">Select</label>
+                            <select id="example-select">
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="example-textarea">Textarea</label>
+                            <textarea 
+                                id="example-textarea" 
+                                rows="3" 
+                                placeholder="Write something..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-pink">Submit</button>
+                    </form>
+                </div>
+
+                <!-- Example: Grid Layout -->
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <h4>Stat 1</h4>
+                        <p class="stat-value">123</p>
+                    </div>
+                    <div class="card">
+                        <h4>Stat 2</h4>
+                        <p class="stat-value">456</p>
+                    </div>
+                    <div class="card">
+                        <h4>Stat 3</h4>
+                        <p class="stat-value">789</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ============================================
+         STEP 3: ADD JAVASCRIPT FILES
+         IMPORTANT: theme.js MUST be first!
+         ============================================ -->
+    <script src="../js/theme.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/main.js"></script>
+    <!-- Add your other scripts below -->
+    
+    <!-- Optional: Add custom behavior for theme changes -->
+    <script>
+        // Listen for theme changes (optional)
+        onThemeChange((theme, isDark) => {
+            console.log('Theme changed to:', theme);
+            
+            // Example: Update chart colors when theme changes
+            if (window.myChart) {
+                // Update chart colors here
+            }
+        });
+        
+        // Example: Check current theme (optional)
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDark = themeManager.isDarkMode();
+            console.log('Current theme is dark:', isDark);
+        });
+    </script>
+</body>
+</html>
+
+<!-- 
+    ============================================
+    THAT'S IT! 🎉
+    
+    Your page now has:
+    ✅ Dark mode toggle
+    ✅ Automatic theme detection
+    ✅ Persistent user preference
+    ✅ Smooth transitions
+    ✅ Full accessibility
+    ✅ Mobile responsive
+    
+    TIPS:
+    - Always use CSS variables for colors
+    - Test in both light and dark modes
+    - Check accessibility (contrast ratios)
+    - Verify on mobile devices
+    
+    Need help? See:
+    - DARK_MODE_QUICK_REF.md - Quick reference
+    - DARK_MODE_GUIDE.md - Full documentation
+    - DARK_MODE_VISUAL_GUIDE.md - Color schemes
+    
+    Example pages:
+    - dashboard-complete.html
+    - period-complete.html
+    - mood-tracker-complete.html
+    ============================================
+-->

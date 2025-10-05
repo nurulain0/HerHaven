@@ -6,30 +6,36 @@
 }
 
 body {
-    font-family: var(--font-main);
-    background-color: var(--light-gray);
-    color: var(--dark-gray);
+    font-family: var(--font-main, 'Inter', sans-serif);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .app-container {
     display: flex;
     min-height: 100vh;
+    background-color: var(--bg-primary);
 }
 
 /* Navigation Styles */
 .main-nav {
     width: 250px;
-    background-color: var(--white);
+    background-color: var(--bg-sidebar);
     padding: var(--space-lg);
-    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    box-shadow: 2px 0 10px var(--shadow-sm);
     position: fixed;
     height: 100vh;
+    border-right: 1px solid var(--border-light);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav-header {
     display: flex;
     align-items: center;
     margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-md);
+    border-bottom: 2px solid var(--border-medium);
 }
 
 .logo {
@@ -51,14 +57,15 @@ body {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: var(--dark-gray);
+    color: var(--text-primary);
     padding: var(--space-sm) var(--space-md);
     border-radius: var(--radius-md);
     transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
-    background-color: var(--primary-pink);
+    background-color: var(--hover-bg);
+    color: var(--accent-pink);
 }
 
 .nav-links a i {
@@ -69,7 +76,7 @@ body {
 
 .nav-links .active a {
     background-color: var(--accent-pink);
-    color: var(--white);
+    color: var(--bg-primary);
 }
 
 /* Content Area Styles */
@@ -77,6 +84,8 @@ body {
     margin-left: 250px;
     flex: 1;
     padding: var(--space-lg);
+    background-color: var(--bg-secondary);
+    transition: background-color 0.3s ease;
 }
 
 .content-header {
@@ -84,6 +93,8 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--border-light);
 }
 
 .search-bar {
@@ -94,18 +105,31 @@ body {
 .search-bar input {
     flex: 1;
     padding: var(--space-sm) var(--space-md);
-    border: 1px solid var(--medium-gray);
+    border: 1px solid var(--border-medium);
     border-radius: var(--radius-md) 0 0 var(--radius-md);
     outline: none;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+    border-color: var(--accent-pink);
+    box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
 .search-bar button {
     padding: var(--space-sm) var(--space-md);
     background-color: var(--accent-pink);
-    color: var(--white);
+    color: var(--bg-primary);
     border: none;
     border-radius: 0 var(--radius-md) var(--radius-md) 0;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: var(--secondary-pink);
 }
 
 .user-menu {
@@ -116,6 +140,7 @@ body {
 .welcome {
     margin-right: var(--space-md);
     font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
 }
 
 .avatar {
@@ -125,11 +150,17 @@ body {
 
 /* Card Styles */
 .card {
-    background: var(--white);
+    background: var(--bg-card);
     border-radius: var(--radius-lg);
     padding: var(--space-md);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px var(--shadow-sm);
     margin-bottom: var(--space-md);
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px var(--shadow-md);
 }
 
 .card-header {
@@ -141,11 +172,12 @@ body {
 
 .card-header h3 {
     font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
 }
 
 .badge {
     background-color: var(--primary-pink);
-    color: var(--accent-pink);
+    color: var(--text-primary);
     padding: var(--space-sm) var(--space-md);
     border-radius: var(--radius-md);
     font-size: 12px;
