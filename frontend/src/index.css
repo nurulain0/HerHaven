@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Soft, magical HerHaven theme */
+    --background: 355 25% 97%;
+    --foreground: 0 0% 29%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 29%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 29%;
+
+    /* Blush pink primary */
+    --primary: 340 82% 85%;
+    --primary-foreground: 340 50% 25%;
+
+    /* Warm lavender secondary */
+    --secondary: 270 50% 88%;
+    --secondary-foreground: 270 40% 30%;
+
+    /* Soft muted tones */
+    --muted: 355 20% 94%;
+    --muted-foreground: 0 0% 45%;
+
+    /* Light blue accent */
+    --accent: 200 70% 88%;
+    --accent-foreground: 200 60% 25%;
+
+    --destructive: 0 72% 70%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 355 15% 90%;
+    --input: 355 15% 92%;
+    --ring: 340 82% 75%;
+
+    --radius: 1rem;
+
+    /* Sidebar colors */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 29%;
+    --sidebar-primary: 340 82% 85%;
+    --sidebar-primary-foreground: 340 50% 25%;
+    --sidebar-accent: 355 20% 96%;
+    --sidebar-accent-foreground: 0 0% 29%;
+    --sidebar-border: 355 15% 90%;
+    --sidebar-ring: 340 82% 75%;
+
+    /* Custom gradients */
+    --gradient-magical: linear-gradient(135deg, hsl(340 82% 90%), hsl(270 50% 90%), hsl(200 70% 90%));
+    --gradient-soft: linear-gradient(180deg, hsl(355 25% 98%), hsl(355 25% 96%));
+    --shadow-soft: 0 4px 20px -2px hsl(340 50% 80% / 0.15);
+    --shadow-card: 0 2px 12px -1px hsl(340 40% 70% / 0.12);
+  }
+
+  .dark {
+    --background: 270 20% 15%;
+    --foreground: 355 25% 95%;
+
+    --card: 270 18% 18%;
+    --card-foreground: 355 25% 95%;
+
+    --popover: 270 18% 18%;
+    --popover-foreground: 355 25% 95%;
+
+    --primary: 340 70% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 40% 35%;
+    --secondary-foreground: 355 25% 95%;
+
+    --muted: 270 15% 25%;
+    --muted-foreground: 355 15% 70%;
+
+    --accent: 200 50% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 15% 25%;
+    --input: 270 15% 25%;
+    --ring: 340 70% 65%;
+
+    --sidebar-background: 270 18% 18%;
+    --sidebar-foreground: 355 25% 95%;
+    --sidebar-primary: 340 70% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 270 15% 25%;
+    --sidebar-accent-foreground: 355 25% 95%;
+    --sidebar-border: 270 15% 25%;
+    --sidebar-ring: 340 70% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
