@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HerHaven - Feminine Health Tracker</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Dark Mode Styles -->
+  <link rel="stylesheet" href="css/dark-mode.css">
   <style>
     :root {
       --primary-pink: #FFD6E0;
@@ -257,6 +259,16 @@
         <p>Your wellness journey</p>
       </div>
     </div>
+    
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle-container" role="button" aria-label="Toggle dark mode" tabindex="0">
+      <span class="theme-toggle-icon sun">☀️</span>
+      <div class="theme-toggle-switch">
+        <div class="theme-toggle-slider"></div>
+      </div>
+      <span class="theme-toggle-icon moon">🌙</span>
+    </div>
+    
     <nav>
       <ul class="nav-links">
         <li><a href="#home" class="active"><span class="nav-text">Home</span></a></li>
@@ -318,6 +330,9 @@
     </footer>
   </div>
 
+  <!-- Dark Mode Script - Load FIRST for no flash -->
+  <script src="js/theme.js"></script>
+  
   <script>
     // Toggle sidebar
     const sidebar = document.getElementById('sidebar');

@@ -1,0 +1,422 @@
+/* ========================================
+   DARK MODE STYLES FOR HERHAVEN
+   ======================================== */
+
+/* Dark Mode Color Variables */
+[data-theme="dark"] {
+    /* Primary Colors - Dark Mode */
+    --primary-pink: #FF85A2;
+    --secondary-pink: #FF6B8B;
+    --accent-pink: #FFD6E0;
+    
+    /* Background Colors */
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #3a3a3a;
+    --bg-card: #252525;
+    --bg-sidebar: #1f1f1f;
+    
+    /* Text Colors */
+    --text-primary: #e5e5e5;
+    --text-secondary: #b8b8b8;
+    --text-tertiary: #8a8a8a;
+    
+    /* Border Colors */
+    --border-light: #404040;
+    --border-medium: #505050;
+    --border-dark: #606060;
+    
+    /* Utility Colors */
+    --white: #e5e5e5;
+    --light-gray: #2d2d2d;
+    --medium-gray: #404040;
+    --dark-gray: #e5e5e5;
+    
+    /* Shadow Colors */
+    --shadow-sm: rgba(0, 0, 0, 0.3);
+    --shadow-md: rgba(0, 0, 0, 0.4);
+    --shadow-lg: rgba(0, 0, 0, 0.5);
+    
+    /* Interactive States */
+    --hover-bg: #333333;
+    --active-bg: #404040;
+    --focus-ring: rgba(255, 133, 162, 0.5);
+}
+
+/* ========================================
+   DARK MODE BODY & CONTAINER STYLES
+   ======================================== */
+
+[data-theme="dark"] body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .app-container {
+    background-color: var(--bg-primary);
+}
+
+/* ========================================
+   DARK MODE SIDEBAR STYLES
+   ======================================== */
+
+[data-theme="dark"] .sidebar,
+[data-theme="dark"] .main-nav {
+    background-color: var(--bg-sidebar);
+    box-shadow: 2px 0 10px var(--shadow-md);
+    border-right: 1px solid var(--border-light);
+}
+
+[data-theme="dark"] .sidebar-header {
+    border-bottom-color: var(--border-medium);
+}
+
+[data-theme="dark"] .nav-links a {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .nav-links a:hover {
+    background-color: var(--hover-bg);
+    color: var(--primary-pink);
+}
+
+[data-theme="dark"] .nav-links .active a {
+    background-color: var(--primary-pink);
+    color: var(--bg-primary);
+}
+
+/* ========================================
+   DARK MODE CARD STYLES
+   ======================================== */
+
+[data-theme="dark"] .card,
+[data-theme="dark"] .cycle-card,
+[data-theme="dark"] .stats-card,
+[data-theme="dark"] .mood-card,
+[data-theme="dark"] .journal-card {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    box-shadow: 0 2px 8px var(--shadow-sm);
+    border: 1px solid var(--border-light);
+}
+
+[data-theme="dark"] .card h3,
+[data-theme="dark"] .card h2,
+[data-theme="dark"] .card h4 {
+    color: var(--text-primary);
+}
+
+/* ========================================
+   DARK MODE FORM STYLES
+   ======================================== */
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-medium);
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+    color: var(--text-tertiary);
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] select:focus {
+    border-color: var(--primary-pink);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+[data-theme="dark"] .search-bar input {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: var(--border-medium);
+}
+
+/* ========================================
+   DARK MODE BUTTON STYLES
+   ======================================== */
+
+[data-theme="dark"] button,
+[data-theme="dark"] .btn {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-medium);
+}
+
+[data-theme="dark"] button:hover,
+[data-theme="dark"] .btn:hover {
+    background-color: var(--hover-bg);
+}
+
+[data-theme="dark"] .btn-pink,
+[data-theme="dark"] button.btn-pink {
+    background-color: var(--primary-pink);
+    color: var(--bg-primary);
+    border: none;
+}
+
+[data-theme="dark"] .btn-pink:hover,
+[data-theme="dark"] button.btn-pink:hover {
+    background-color: var(--secondary-pink);
+}
+
+/* ========================================
+   DARK MODE CALENDAR STYLES
+   ======================================== */
+
+[data-theme="dark"] .calendar-day {
+    background-color: var(--bg-card);
+    border-color: var(--border-light);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .period-day {
+    background-color: var(--primary-pink);
+    color: var(--bg-primary);
+}
+
+[data-theme="dark"] .calendar-header {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+/* ========================================
+   DARK MODE MOOD TRACKER STYLES
+   ======================================== */
+
+[data-theme="dark"] .mood-option {
+    border: 2px solid var(--border-medium);
+    background-color: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .mood-option:hover {
+    border-color: var(--primary-pink);
+    transform: scale(1.1);
+}
+
+[data-theme="dark"] .mood-option.selected {
+    border-color: var(--primary-pink);
+    box-shadow: 0 0 10px var(--primary-pink);
+}
+
+/* ========================================
+   DARK MODE PROGRESS BAR STYLES
+   ======================================== */
+
+[data-theme="dark"] .progress-bar {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-light);
+}
+
+[data-theme="dark"] .progress {
+    background: linear-gradient(90deg, var(--secondary-pink), var(--primary-pink));
+}
+
+/* ========================================
+   DARK MODE TABLE STYLES
+   ======================================== */
+
+[data-theme="dark"] table {
+    background-color: var(--bg-card);
+    border-color: var(--border-light);
+}
+
+[data-theme="dark"] th {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-medium);
+}
+
+[data-theme="dark"] td {
+    border-color: var(--border-light);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] tr:hover {
+    background-color: var(--hover-bg);
+}
+
+/* ========================================
+   DARK MODE CONTENT AREA STYLES
+   ======================================== */
+
+[data-theme="dark"] .content-area {
+    background-color: var(--bg-primary);
+}
+
+[data-theme="dark"] .content-header {
+    border-bottom: 1px solid var(--border-light);
+}
+
+/* ========================================
+   DARK MODE CHART/GRAPH STYLES
+   ======================================== */
+
+[data-theme="dark"] .chart-container {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-light);
+}
+
+[data-theme="dark"] canvas {
+    filter: brightness(0.9);
+}
+
+/* ========================================
+   DARK MODE SCROLLBAR STYLES
+   ======================================== */
+
+[data-theme="dark"] ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: var(--border-medium);
+    border-radius: 5px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--border-dark);
+}
+
+/* ========================================
+   DARK MODE TOGGLE SWITCH STYLES
+   ======================================== */
+
+.theme-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    margin: 10px 0;
+}
+
+.theme-toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 26px;
+    background-color: var(--medium-gray);
+    border-radius: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+[data-theme="dark"] .theme-toggle-switch {
+    background-color: var(--primary-pink);
+}
+
+.theme-toggle-slider {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .theme-toggle-slider {
+    transform: translateX(24px);
+}
+
+.theme-toggle-icon {
+    font-size: 18px;
+}
+
+.theme-toggle-icon.sun {
+    color: #ffd700;
+}
+
+.theme-toggle-icon.moon {
+    color: #7c7c7c;
+}
+
+[data-theme="dark"] .theme-toggle-icon.sun {
+    color: #7c7c7c;
+}
+
+[data-theme="dark"] .theme-toggle-icon.moon {
+    color: #ffd700;
+}
+
+/* ========================================
+   DARK MODE MODAL/DIALOG STYLES
+   ======================================== */
+
+[data-theme="dark"] .modal,
+[data-theme="dark"] .dialog {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border-medium);
+}
+
+[data-theme="dark"] .modal-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* ========================================
+   DARK MODE ALERT/NOTIFICATION STYLES
+   ======================================== */
+
+[data-theme="dark"] .alert,
+[data-theme="dark"] .notification {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-medium);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .alert-success {
+    border-left: 4px solid #4caf50;
+}
+
+[data-theme="dark"] .alert-error {
+    border-left: 4px solid #f44336;
+}
+
+[data-theme="dark"] .alert-warning {
+    border-left: 4px solid #ff9800;
+}
+
+/* ========================================
+   DARK MODE DROPDOWN STYLES
+   ======================================== */
+
+[data-theme="dark"] .dropdown-menu {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    box-shadow: 0 4px 12px var(--shadow-md);
+}
+
+[data-theme="dark"] .dropdown-item {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .dropdown-item:hover {
+    background-color: var(--hover-bg);
+}
+
+/* ========================================
+   SMOOTH TRANSITIONS
+   ======================================== */
+
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+button,
+a,
+input,
+.nav-links a {
+    transition: all 0.3s ease;
+}
