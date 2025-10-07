@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Tracker - HerHaven</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/dark-mode.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="main-nav">
+            <div class="nav-header">
+                <img src="../herheavenLogo.png" alt="HerHaven Logo" class="logo">
+                <h1>HerHaven</h1>
+            </div>
+            
+            <!-- Dark Mode Toggle -->
+            <div class="theme-toggle-container" role="button" aria-label="Toggle dark mode" tabindex="0">
+                <span class="theme-toggle-icon sun">☀️</span>
+                <div class="theme-toggle-switch">
+                    <div class="theme-toggle-slider"></div>
+                </div>
+                <span class="theme-toggle-icon moon">🌙</span>
+            </div>
+            
+            <!-- Navigation Links -->
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="icon">📊</i> Dashboard</a></li>
+                <li><a href="page1.html"><i class="icon">📅</i> Period Tracker</a></li>
+                <li class="active"><a href="page2.html"><i class="icon">😊</i> Mood Tracker</a></li>
+                <li><a href="page3.html"><i class="icon">📝</i> Journal</a></li>
+                <li><a href="page4.html"><i class="icon">🤰</i> Pregnancy</a></li>
+                <li><a href="page5.html"><i class="icon">📈</i> Health Metrics</a></li>
+                <li><a href="page6.html"><i class="icon">⚙️</i> Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            <!-- Header -->
+            <header class="content-header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button>🔍</button>
+                </div>
+                <div class="user-menu">
+                    <span class="welcome">Mood Tracker</span>
+                    <span class="avatar">👤</span>
+                </div>
+            </header>
+
+            <!-- Mood Tracker Content -->
+            <div class="mood-container">
+                <h2>How are you feeling today?</h2>
+                
+                <!-- Today's Mood -->
+                <div class="card mood-card">
+                    <div class="card-header">
+                        <h3>Log Today's Mood</h3>
+                    </div>
+                    <div class="mood-selector">
+                        <div class="mood-option" data-mood="very-happy" title="Very Happy">😄</div>
+                        <div class="mood-option" data-mood="happy" title="Happy">😊</div>
+                        <div class="mood-option" data-mood="neutral" title="Neutral">😐</div>
+                        <div class="mood-option" data-mood="sad" title="Sad">😢</div>
+                        <div class="mood-option" data-mood="stressed" title="Stressed">😰</div>
+                        <div class="mood-option" data-mood="angry" title="Angry">😠</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mood-notes">Notes (optional)</label>
+                        <textarea id="mood-notes" rows="3" placeholder="What's on your mind?"></textarea>
+                    </div>
+                    
+                    <button class="btn-pink" id="save-mood">Save Mood</button>
+                </div>
+
+                <!-- Mood History -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Mood History</h3>
+                        <select id="mood-timeframe">
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="year">This Year</option>
+                        </select>
+                    </div>
+                    <div class="mood-chart">
+                        <canvas id="moodChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Mood Insights -->
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <h4>Most Common Mood</h4>
+                        <p class="stat-value">😊 Happy</p>
+                        <p class="stat-detail">65% of the time</p>
+                    </div>
+                    <div class="card">
+                        <h4>Mood Streak</h4>
+                        <p class="stat-value">7 days</p>
+                        <p class="stat-detail">Keep it up! 🎉</p>
+                    </div>
+                    <div class="card">
+                        <h4>Pattern Detected</h4>
+                        <p class="stat-value">Day 14</p>
+                        <p class="stat-detail">Happiest around ovulation</p>
+                    </div>
+                </div>
+
+                <!-- Recent Mood Entries -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Recent Entries</h3>
+                    </div>
+                    <div class="mood-entries">
+                        <div class="mood-entry">
+                            <span class="entry-emoji">😊</span>
+                            <div class="entry-details">
+                                <p class="entry-mood">Happy</p>
+                                <p class="entry-date">Today, 9:30 AM</p>
+                                <p class="entry-notes">Feeling great today!</p>
+                            </div>
+                        </div>
+                        <div class="mood-entry">
+                            <span class="entry-emoji">😐</span>
+                            <div class="entry-details">
+                                <p class="entry-mood">Neutral</p>
+                                <p class="entry-date">Yesterday, 8:15 PM</p>
+                                <p class="entry-notes">Just a regular day</p>
+                            </div>
+                        </div>
+                        <div class="mood-entry">
+                            <span class="entry-emoji">😊</span>
+                            <div class="entry-details">
+                                <p class="entry-mood">Happy</p>
+                                <p class="entry-date">2 days ago, 7:45 AM</p>
+                                <p class="entry-notes">Morning workout was amazing!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript Files - Theme MUST load first -->
+    <script src="../js/theme.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/mood.js"></script>
+    <script src="../js/chart-config.js"></script>
+    
+    <style>
+        /* Mood-specific styles */
+        .mood-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .mood-option {
+            font-size: 3rem;
+            cursor: pointer;
+            padding: 1rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            background-color: var(--bg-tertiary);
+            border: 3px solid transparent;
+        }
+        
+        .mood-option:hover {
+            transform: scale(1.2);
+            background-color: var(--hover-bg);
+        }
+        
+        .mood-option.selected {
+            border-color: var(--accent-pink);
+            background-color: var(--primary-pink);
+            transform: scale(1.3);
+        }
+        
+        .mood-entries {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .mood-entry {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: var(--bg-tertiary);
+            transition: background-color 0.3s ease;
+        }
+        
+        .mood-entry:hover {
+            background-color: var(--hover-bg);
+        }
+        
+        .entry-emoji {
+            font-size: 2.5rem;
+        }
+        
+        .entry-details {
+            flex: 1;
+        }
+        
+        .entry-mood {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .entry-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .entry-notes {
+            color: var(--text-primary);
+        }
+        
+        .stat-detail {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+    </style>
+</body>
+</html>
