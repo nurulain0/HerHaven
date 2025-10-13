@@ -1,0 +1,73 @@
+/* ===== Tablets ===== */
+@media (max-width: 1024px) {
+    /* Sidebar adjustments */
+    .main-nav {
+        width: 200px;
+    }
+
+    /* Dashboard content */
+    .content-area {
+        margin-left: 200px;
+        padding: 10px;
+    }
+
+    /* Cards in grid */
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    /* Header search bar */
+    .search-bar input {
+        width: 200px;
+    }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 480px) {
+    /* Hide sidebar */
+    .main-nav {
+        display: none;
+    }
+
+    /* Dashboard content full width */
+    .content-area {
+        margin-left: 0;
+        padding: 5px;
+    }
+
+    /* Stack cards vertically */
+    .dashboard-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Cycle card full width */
+    .cycle-card {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* Header adjustments */
+    .content-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-bar input {
+        width: 100%;
+    }
+
+    .user-menu {
+        justify-content: flex-start;
+    }
+
+    /* Activity list items stacked */
+    .activity-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
