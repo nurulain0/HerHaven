@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +17,7 @@
       --dark-gray: #333333;
       --white: #FFFFFF;
       --sidebar-width: 260px;
-      --sidebar-collapsed: 70px;
+      --sidebar-collapsed: 70px; 
     }
 
     * {margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
@@ -368,7 +367,6 @@
       let current = '';
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
         if(scrollY >= sectionTop - 200) {
           current = section.getAttribute('id');
         }
@@ -383,32 +381,4 @@
     });
   </script>
 </body>
-=======
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HerHaven - Your Wellness Companion</title>
-    <meta name="description" content="Track your cycle, pregnancy journey, and daily wellness with HerHaven" />
-    <meta name="author" content="HerHaven" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <meta property="og:title" content="6fc45c9c-9f7e-4bc2-9c4f-e7ac2ed90e88" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
-
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
->>>>>>> 67c4a09c1e9b55cf56c286a358e3e9a6892bb766
 </html>
