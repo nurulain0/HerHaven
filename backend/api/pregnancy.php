@@ -1,7 +1,7 @@
-// api/period.php
-header("Content-Type: application/json");
-require_once("../utils/config.php");
-require_once("../database/queries.php");
+<?php
+require_once __DIR__ . '/../utils/validation.php';
+require_once __DIR__ . '/../utils/config.php';
+require_once __DIR__ . '/../database/queries.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 $user_id = validate_session(); // Custom auth function
