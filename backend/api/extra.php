@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../utils/validation.php';
+
 function sanitizeInput($data) {
     if (is_array($data)) {
         return array_map('sanitizeInput', $data);
