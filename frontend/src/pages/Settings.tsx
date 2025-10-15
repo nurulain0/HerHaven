@@ -1,9 +1,16 @@
+import { useState } from "react";
 import { User, Bell, Lock, Palette, Moon } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 const Settings = () => {
+  // State for switches
+  const [cycleReminders, setCycleReminders] = useState(false);
+  const [dailyAffirmations, setDailyAffirmations] = useState(true);
+  const [journalReminders, setJournalReminders] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
     <>
       <div className="mb-8 animate-fade-in">
@@ -59,21 +66,21 @@ const Settings = () => {
                 <p className="text-sm font-medium text-foreground">Cycle Reminders</p>
                 <p className="text-xs text-muted-foreground">Get notified about upcoming periods</p>
               </div>
-              <Switch />
+              <Switch checked={cycleReminders} onCheckedChange={setCycleReminders} />
             </div>
             <div className="flex items-center justify-between p-3 bg-muted/30 rounded-xl">
               <div>
                 <p className="text-sm font-medium text-foreground">Daily Affirmations</p>
                 <p className="text-xs text-muted-foreground">Receive daily positive messages</p>
               </div>
-              <Switch defaultChecked />
+              <Switch checked={dailyAffirmations} onCheckedChange={setDailyAffirmations} />
             </div>
             <div className="flex items-center justify-between p-3 bg-muted/30 rounded-xl">
               <div>
                 <p className="text-sm font-medium text-foreground">Journal Reminders</p>
                 <p className="text-xs text-muted-foreground">Remind me to journal daily</p>
               </div>
-              <Switch defaultChecked />
+              <Switch checked={journalReminders} onCheckedChange={setJournalReminders} />
             </div>
           </div>
         </div>
@@ -124,7 +131,7 @@ const Settings = () => {
                   <p className="text-xs text-muted-foreground">Toggle dark theme</p>
                 </div>
               </div>
-              <Switch />
+              <Switch checked={darkMode} onCheckedChange={setDarkMode} />
             </div>
           </div>
         </div>
