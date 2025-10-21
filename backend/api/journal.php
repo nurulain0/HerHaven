@@ -3,7 +3,7 @@ header("Content-Type: application/json");
 require_once("../utils/config.php");
 require_once("../database/queries.php");
 require_once(__DIR__ . '/../utils/validation.php');
-require_once('extra.php');
+require_once(__DIR__ . '/extra.php');
 
 session_start();
 
