@@ -1,0 +1,12 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Ask a Question
+    url: https://github.com/yourusername/HerHaven/discussions
+    about: Have a question? Start a discussion!
+  - name: 📖 Documentation
+    url: https://github.com/yourusername/HerHaven/wiki
+    about: Check out our documentation and guides
+  - name: 💜 Community Chat
+    url: https://github.com/yourusername/HerHaven/discussions
+    about: Join our community discussions
+
